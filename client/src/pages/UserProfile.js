@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
-import "../sass/UserProfile.scss";
-import UserTable from "../components/presentational/profile/UserTable";
-import UserEvents from "../components/presentational/profile/UserEvents";
-import UserTeams from "../components/presentational/profile/UserTeams";
-import { UserProvider, UserContext } from "../context/userContext";
-import ActivityLogs from "../components/presentational/profile/ActivityLog";
+import React, { useEffect, useContext } from 'react';
+import '../sass/UserProfile.scss';
+import UserTable from '../components/presentational/profile/UserTable';
+import UserEvents from '../components/presentational/profile/UserEvents';
+import UserTeams from '../components/presentational/profile/UserTeams';
+import { UserProvider, UserContext } from '../context/userContext';
+import ActivityLogs from '../components/presentational/profile/ActivityLog';
 
 const UserProfile = (props) => {
   const {
