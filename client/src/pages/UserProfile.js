@@ -4,6 +4,7 @@ import UserTable from '../components/presentational/profile/UserTable';
 import UserEvents from '../components/presentational/profile/UserEvents';
 import UserTeams from '../components/presentational/profile/UserTeams';
 import { UserProvider, UserContext } from '../context/userContext';
+import ActivityLogs from '../components/presentational/profile/ActivityLog';
 
 const UserProfile = (props) => {
 
@@ -31,6 +32,12 @@ const UserProfile = (props) => {
                 </div>
                 <UserContext.Consumer>
                     { ({ teams }) => <UserTeams context={{ teams }}/> }
+                </UserContext.Consumer>
+                <div className="profile__header">
+                    <h3 className="profile__subtitle">Activity Log</h3>
+                </div>
+                <UserContext.Consumer>
+                    { ({ logs }) => <ActivityLogs context={{ logs }}/> }
                 </UserContext.Consumer>
             </div>
         </UserProvider>
