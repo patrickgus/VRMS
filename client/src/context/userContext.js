@@ -32,6 +32,15 @@ export const UserProvider = ({ children }) => {
         }
     ])
 
+    const [logs, setLogs] = useState([
+		{
+			date_logged: "Mon Aug 03 2020 15:27:22 GMT-0700",
+			log_category: "Development",
+			log_hours: "3",
+			log_notes: "Worked on front end"
+		}
+	])
+
     const removeOption = (category, optionToRemove) => {
         const updatedUser = { ...user }
         updatedUser[category] = user[category].filter(option => option !== optionToRemove);
@@ -39,7 +48,7 @@ export const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ user, events, teams, removeOption }}>
+        <UserContext.Provider value={{ user, events, teams, logs, removeOption }}>
             { children }
         </UserContext.Provider>
     );
