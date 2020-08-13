@@ -4,13 +4,13 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [user, setUser ] = useState({
-        name: "John Smith",
-        email: "john.smith@test.com",
-        github: "www.github.com/j_smith",
-        slack: "www.slack.com/j_smith",
-        desiredRoles: ["UX","Front End"],
-        hackNights: ["DTLA", "Westside"],
-        availability: ["Mon PM", "Thurs PM"]
+        // name: "John Smith",
+        // email: "john.smith@test.com",
+        // github: "www.github.com/j_smith",
+        // slack: "www.slack.com/j_smith",
+        // desiredRoles: ["UX","Front End"],
+        // hackNights: ["DTLA", "Westside"],
+        // availability: ["Mon PM", "Thurs PM"]
     });
 
     const [events, setEvents] = useState([
@@ -48,7 +48,7 @@ export const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ user, events, teams, logs, removeOption }}>
+        <UserContext.Provider value={{ user, events, teams, logs, setUser, setEvents, setTeams,  setLogs, removeOption }}>
             { children }
         </UserContext.Provider>
     );
