@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import "../sass/UserProfile.scss";
 import UserTable from "../components/presentational/profile/UserTable";
 import UserEvents from "../components/presentational/profile/UserEvents";
