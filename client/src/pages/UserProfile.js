@@ -65,7 +65,7 @@ const UserProfile = (props) => {
   }
 
   useEffect(() => {
-    getProfileInfo();
+		getProfileInfo();
   }, []);
 
   return (
