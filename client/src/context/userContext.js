@@ -18,21 +18,17 @@ export const UserProvider = ({ children }) => {
 
   const [events, setEvents] = useState([
     {
-      name: "VRMS Team Meeting",
-      time: "04/13, 7PM",
+      name: "",
+      date: "",
       url: "",
     },
   ]);
 
   const [teams, setTeams] = useState([
     {
-      name: "VRMS",
-      status: "Active",
-    },
-    {
-      name: "Where2Vote2018",
-      status: "Inactive",
-    },
+      name: "",
+      projectStatus: "",
+    }
   ]);
 
   const [logs, setLogs] = useState([
@@ -54,7 +50,7 @@ export const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ user, events, teams, logs, setUser, removeOption }}
+      value={{ user, events, teams, logs, setUser, setEvents, setTeams, setLogs, removeOption }}
     >
       {children}
     </UserContext.Provider>
