@@ -1,5 +1,5 @@
-import React from "react";
-import moment from "moment";
+import React from 'react';
+import moment from 'moment';
 
 const UserEvents = ({ context }) => {
   const { events } = context;
@@ -19,12 +19,12 @@ const UserEvents = ({ context }) => {
                 <tr key={index}>
                   <td className="user-data__info">{event.name}</td>
                   <td className="user-data__info">
-                    {moment(event.date).format("M/YY hA")}
+                    {moment(event.date).format('M/YY hA')}
                   </td>
                   <td className="user-data__info">{event.url}</td>
                 </tr>
               ))
-            : ""}
+            : ''}
         </tbody>
       </table>
     </div>

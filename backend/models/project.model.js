@@ -16,6 +16,7 @@ Idea for the future: programmingLanguages, numberGithubContributions (pull these
 */
 
 const projectSchema = mongoose.Schema({
+    _id: { type: String },                              // temporary fix for null repsonse when api/projects/:id is called
     name: { type: String },
     description: { type: String },
     githubIdentifier: { type: String },
