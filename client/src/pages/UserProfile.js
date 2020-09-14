@@ -22,17 +22,17 @@ const UserProfile = (props) => {
 
   async function fetchUser() {
     try {
-      await fetch("api/users/5ecdc8f8cef75e0017cf30e5")
+      await fetch('api/users/5ecdc8f8cef75e0017cf30e5')
         .then((res) => res.json())
         .then((data) => setUser(data));
     } catch (error) {
-      console.log("Error fetching:", error);
+      console.log('Error fetching:', error);
     }
   }
 
   async function fetchEvents() {
     try {
-      await fetch("api/events/5e4b162f70897038554acbec")
+      await fetch('api/events/5e4b162f70897038554acbec')
         .then((res) => res.json())
         .then((data) => {
           const eventsArr = [data];
@@ -40,13 +40,13 @@ const UserProfile = (props) => {
         })
         .then((eventsArr) => setEvents(eventsArr));
     } catch (error) {
-      console.log("Error fetching:", error);
+      console.log('Error fetching:', error);
     }
   }
 
   async function fetchTeams() {
     try {
-      await fetch("api/projects/5edeac78ce228b001778facd")
+      await fetch('api/projects/5edeac78ce228b001778facd')
         .then((res) => res.json())
         .then((data) => {
           const teamsArr = [data];
@@ -54,7 +54,7 @@ const UserProfile = (props) => {
         })
         .then((teamsArr) => setTeams(teamsArr));
     } catch (error) {
-      console.log("Error fetching:", error);
+      console.log('Error fetching:', error);
     }
   }
 
