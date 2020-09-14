@@ -7,15 +7,64 @@ import ActivityLog from "../components/presentational/profile/ActivityLog";
 import { UserProvider, UserContext } from "../context/userContext";
 
 const UserProfile = (props) => {
-  const { user, setUser, removeOption, events, teams, logs } = props.context;
-  useEffect(() => {
-    fetch("api/users/5ecdc8f8cef75e0017cf30e5")
-      .then((res) => res.json())
-      .then((data) => setUser(data))
-      .catch((err) => console.log("Error fetching:", err));
-  }, []);
+  const {
+    user,
+    setUser,
+    setEvents,
+    setTeams,
+    removeOption,
+    events,
+    teams,
+    logs,
+  } = props.context;
 
-  console.log("user", user);
+  async function fetchUser() {
+    try {
+      await fetch("api/users/5ecdc8f8cef75e0017cf30e5")
+        .then((res) => res.json())
+        .then((data) => setUser(data));
+    } catch (error) {
+      console.log("Error fetching:", error);
+    }
+  }
+
+  async function fetchEvents() {
+    try {
+      await fetch("api/events/5e4b162f70897038554acbec")
+        .then((res) => res.json())
+        .then((data) => {
+          const eventsArr = [data];
+          return eventsArr;
+        })
+        .then((eventsArr) => setEvents(eventsArr));
+    } catch (error) {
+      console.log("Error fetching:", error);
+    }
+  }
+
+  async function fetchTeams() {
+    try {
+      await fetch("api/projects/5edeac78ce228b001778facd")
+        .then((res) => res.json())
+        .then((data) => {
+          const teamsArr = [data];
+          return teamsArr;
+        })
+        .then((teamsArr) => setTeams(teamsArr));
+    } catch (error) {
+      console.log("Error fetching:", error);
+    }
+  }
+
+  async function getProfileInfo() {
+    await fetchUser();
+    await fetchEvents();
+    await fetchTeams();
+  }
+
+  useEffect(() => {
+    getProfileInfo();
+  }, []);
 
   return (
     <div>

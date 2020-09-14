@@ -1,9 +1,9 @@
 import React from 'react';
-import ProfileOption from './ProfileOption';
+import moment from "moment";
 
 const UserEvents = ({ context }) => {
     const { events } = context;
-    console.log(events);
+    console.log("events", events);
 
     return (
         <div className="user-events">
@@ -18,7 +18,7 @@ const UserEvents = ({ context }) => {
                     {events ? events.map((event,index) => 
                         (<tr key={index}>
                             <td className="user-data__info">{event.name}</td>
-                            <td className="user-data__info">{event.time}</td>
+                            <td className="user-data__info">{moment(event.date).format("M/YY hA")}</td>
                             <td className="user-data__info">{event.url}</td>
                         </tr>)) 
                         : ("")}
