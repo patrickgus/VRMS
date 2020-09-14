@@ -1,67 +1,52 @@
-import React, { useEffect, useContext } from 'react';
-import '../sass/UserProfile.scss';
-import UserTable from '../components/presentational/profile/UserTable';
-import UserEvents from '../components/presentational/profile/UserEvents';
-import UserTeams from '../components/presentational/profile/UserTeams';
-import { UserProvider, UserContext } from '../context/userContext';
-import ActivityLogs from '../components/presentational/profile/ActivityLog';
+import React, { useEffect } from "react";
+import "../sass/UserProfile.scss";
+import UserTable from "../components/presentational/profile/UserTable";
+import UserEvents from "../components/presentational/profile/UserEvents";
+import UserTeams from "../components/presentational/profile/UserTeams";
+import ActivityLog from "../components/presentational/profile/ActivityLog";
+import { UserProvider, UserContext } from "../context/userContext";
 
-const UserProfile = () => {
-  const context = useContext(UserContext);
-  const { setUser } = context;
-
-  async function getUser() {
-    try {
-      const user = await fetch(
-        "/api/users/5f13818fcce25dfc3357382d"
-      );
-      const userJson = await user.json();
-      setUser(userJson);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function getProfileInfo() {
-    await getUser();
-  }
-
+const UserProfile = (props) => {
+  const { user, setUser, removeOption, events, teams, logs } = props.context;
   useEffect(() => {
-    getProfileInfo();
+    fetch("api/users/5ecdc8f8cef75e0017cf30e5")
+      .then((res) => res.json())
+      .then((data) => setUser(data))
+      .catch((err) => console.log("Error fetching:", err));
   }, []);
 
+  console.log("user", user);
+
   return (
-    <UserProvider>
-      <div>
-        <div className="profile__header">
-          <h3 className="profile__title">My Profile</h3>
-        </div>
-        <UserContext.Consumer>
-          {({ user, removeOption }) => (
-            <UserTable context={{ user, removeOption }} />
-          )}
-        </UserContext.Consumer>
-        <div className="profile__header">
-          <h3 className="profile__subtitle">My Upcoming Events</h3>
-        </div>
-        <UserContext.Consumer>
-          {({ events }) => <UserEvents context={{ events }} />}
-        </UserContext.Consumer>
-        <div className="profile__header">
-          <h3 className="profile__subtitle">My Teams</h3>
-        </div>
-        <UserContext.Consumer>
-          {({ teams }) => <UserTeams context={{ teams }} />}
-        </UserContext.Consumer>
-        <div className="profile__header">
-          <h3 className="profile__subtitle">Activity Log</h3>
-        </div>
-        <UserContext.Consumer>
-          {({ logs }) => <ActivityLogs context={{ logs }} />}
-        </UserContext.Consumer>
+    <div>
+      <div className="profile__header">
+        <h3 className="profile__title">My Profile</h3>
       </div>
-    </UserProvider>
+      <UserTable context={{ user, removeOption }} />
+      <div className="profile__header">
+        <h3 className="profile__subtitle">My Upcoming Events</h3>
+      </div>
+      <UserEvents context={{ events }} />
+      <div className="profile__header">
+        <h3 className="profile__subtitle">My Teams</h3>
+      </div>
+      <UserTeams context={{ teams }} />
+      <div className="profile__header">
+        <h3 className="profile__subtitle">Activity Log</h3>
+      </div>
+      <ActivityLog context={{ logs }} />
+    </div>
   );
 };
 
-export default UserProfile;
+export default (function (WrappedComponent) {
+  return (props) => {
+    return (
+      <UserProvider {...props}>
+        <UserContext.Consumer>
+          {(context) => <WrappedComponent context={context} />}
+        </UserContext.Consumer>
+      </UserProvider>
+    );
+  };
+})(UserProfile);
