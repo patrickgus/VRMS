@@ -3,7 +3,6 @@ import moment from "moment";
 
 const ActivityLogs = ({ context }) => {
   const { logs } = context;
-  console.log("logs", logs);
 
   return (
     <>
