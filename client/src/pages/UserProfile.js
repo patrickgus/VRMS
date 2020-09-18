@@ -18,6 +18,8 @@ const UserProfile = (props) => {
     logs,
   } = props.context;
 
+  // IDs for api calls are hardcoded temporarily
+
   async function fetchUser() {
     try {
       await fetch("api/users/5ecdc8f8cef75e0017cf30e5")
