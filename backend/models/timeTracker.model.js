@@ -23,7 +23,9 @@ timeTrackerSchema.methods.serialize = function () {
     user: {
       userId: this.user.userId,
     },
-    selectedAnswer: this.selectedAnswer,
+    project: this.project,
+    category: this.category,
+    notes: this.notes,
     startDate: this.startDate,
     endDate: this.endDate,
   };
