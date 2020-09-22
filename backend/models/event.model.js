@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const eventSchema = mongoose.Schema({
-    _id: { type: String },                              // temporary fix for null repsonse when api/events/:id is called
     name: { type: String },
     location: {                                         // should we include address here?
         city: { type: String },
