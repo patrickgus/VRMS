@@ -11,9 +11,9 @@ const timeTrackerSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Project",
   },
-  category: { type: String }, // picklist with 4 options: Development, Design/UX, Product/Project Management, Other
+  category: { type: String },                     // picklist with 4 options: Development, Design/UX, Product/Project Management, Other
   notes: { type: String },
-  startDate: { type: Date },
+  startDate: { type: Date },                      // hours spent will be calculated in front end from the difference of startDate and endDate
   endDate: { type: Date },
 });
 
