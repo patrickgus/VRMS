@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const TimeTracker = require("../models/timeTracker.model");
+const ActivityLog = require("../models/activityLog.model");
 
 // GET api/logs/
 router.get("/", (req, res) => {
-  TimeTracker.find()
+  ActivityLog.find()
     .populate("user")
     .populate("project")
     .then((logs) => {
@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/user/:id", (req, res) => {
-  TimeTracker.find({ user: req.params.id })
+  ActivityLog.find({ user: req.params.id })
     .populate("user")
     .populate("project")
     .then((logs) => {
@@ -35,7 +35,7 @@ router.get("/user/:id", (req, res) => {
 });
 
 router.get("/project/:id", (req, res) => {
-  TimeTracker.find({ project: req.params.id })
+  ActivityLog.find({ project: req.params.id })
     .populate("user")
     .populate("project")
     .then((logs) => {
@@ -50,7 +50,7 @@ router.get("/project/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  TimeTracker.create(req.body, function (err, log) {
+  ActivityLog.create(req.body, function (err, log) {
     if (err) {
       console.log(err.errmsg);
       res.json(err.errmsg);

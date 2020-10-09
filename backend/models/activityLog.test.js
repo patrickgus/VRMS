@@ -1,9 +1,9 @@
-const TimeTracker = require("./timeTracker.model");
+const ActivityLog = require("./activityLog.model");
 
 const { setupDB } = require("../setup-test");
-setupDB("timeTracker-model");
+setupDB("activityLog-model");
 
-describe("TimeTracker Model saves the correct values", () => {
+describe("ActivityLog Model saves the correct values", () => {
   test("Save a model instance and then read from the db", async (done) => {
     const submittedData = {
       category: "Development", // Development, Design/UX, Product/Project Management, Other
@@ -12,8 +12,8 @@ describe("TimeTracker Model saves the correct values", () => {
       endDate: 1594023390039, // end date and time of the activity
     };
 
-    await TimeTracker.create(submittedData);
-    const savedDataArray = await TimeTracker.find();
+    await ActivityLog.create(submittedData);
+    const savedDataArray = await ActivityLog.find();
     const savedData = savedDataArray[0];
     expect(savedData.category === submittedData.category);
     expect(savedData.notes === submittedData.notes);
