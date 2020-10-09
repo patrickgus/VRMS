@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 mongoose.Promise = global.Promise;
 
-const timeTrackerSchema = mongoose.Schema({
+const activityLogSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -17,7 +17,7 @@ const timeTrackerSchema = mongoose.Schema({
   endDate: { type: Date },
 });
 
-timeTrackerSchema.methods.serialize = function () {
+activityLogSchema.methods.serialize = function () {
   return {
     id: this._id,
     user: {
@@ -31,6 +31,6 @@ timeTrackerSchema.methods.serialize = function () {
   };
 };
 
-const TimeTracker = mongoose.model("TimeTracker", timeTrackerSchema);
+const ActivityLog = mongoose.model("ActivityLog", activityLogSchema);
 
-module.exports = TimeTracker;
+module.exports = ActivityLog;

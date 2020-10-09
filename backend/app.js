@@ -70,7 +70,7 @@ const recurringEventsRouter = require("./routers/recurringEvents.router");
 const projectTeamMembersRouter = require("./routers/projectTeamMembers.router");
 const slackRouter = require("./routers/slack.router");
 const authRouter = require("./routers/auth.router");
-const timeTrackerRouter = require("./routers/timeTracker.router");
+const activityLogRouter = require("./routers/activityLog.router");
 
 app.use("/api/events", eventsRouter);
 app.use("/api/checkins", checkInsRouter);
@@ -84,7 +84,7 @@ app.use("/api/recurringevents", recurringEventsRouter);
 app.use("/api/projectteammembers", projectTeamMembersRouter);
 app.use("/api/slack", slackRouter);
 app.use("/api/auth", authRouter);
-app.use("/api/logs", timeTrackerRouter);
+app.use("/api/logs", activityLogRouter);
 const CLIENT_BUILD_PATH = path.join(__dirname, "../client/build");
 
 // Serve static files from the React frontend app

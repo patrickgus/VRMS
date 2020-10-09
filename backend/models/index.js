@@ -13,7 +13,7 @@ db.projectTeamMember = require("./projectTeamMember.model");
 db.question = require("./question.model");
 db.recurringEvent = require("./recurringEvent.model");
 db.role = require("./role.model");
-db.timeTracker = require("./timeTracker.model");
+db.activityLog = require("./activityLog.model");
 db.user = require("./user.model");
 
 module.exports = db;
