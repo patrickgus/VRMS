@@ -12,6 +12,7 @@ const UserProfile = (props) => {
     setUser,
     setEvents,
     setTeams,
+    setLogs,
     removeOption,
     events,
     teams,
@@ -58,15 +59,35 @@ const UserProfile = (props) => {
     }
   }
 
+  async function fetchLogs() {
+    try {
+      await fetch("api/logs/user/5ecdc8f8cef75e0017cf30e5")
+        .then((res) => res.json())
+        .then((data) => {
+          const logsArr = [data];
+          return logsArr;
+        })
+        .then((logsArr) => setLogs(logsArr));
+    } catch (error) {
+      console.log("Error fetching:", error);
+    }
+  }
+
   async function getProfileInfo() {
     await fetchUser();
     await fetchEvents();
     await fetchTeams();
+    await fetchLogs();
   }
 
   useEffect(() => {
     getProfileInfo();
   }, []);
+
+  function renderLogs() {
+    console.log("logs", logs);
+    return logs.map(log => <ActivityLog key={log._id} context={log} />)
+  }
 
   return (
     <div>
@@ -85,7 +106,7 @@ const UserProfile = (props) => {
       <div className="profile__header">
         <h3 className="profile__subtitle">Activity Log</h3>
       </div>
-      <ActivityLog context={{ logs }} />
+        {renderLogs()}
     </div>
   );
 };

@@ -1,24 +1,22 @@
 import React from "react";
 import moment from "moment";
 
-const ActivityLogs = ({ context }) => {
-  const { logs } = context;
+const ActivityLog = (log) => {
+  const startTime = moment(log.startDate).format("MM-DD-YYYY");
+  const endTime = moment(log.endDate).format("MM-DD-YYYY");
+  // const hours = moment.duration(endTime.diff(startTime, "hours"));
+
+  // console.log(log);
 
   return (
-    <>
-      {logs
-        ? logs.map((log) => (
-            <div className="ActivityLog">
-              {" "}
-              <h3>{moment(log.date_logged).format("MM-DD-YYYY")}</h3>
-              <p>Category: {log.log_category}</p>
-              <p>Hours: {log.log_hours}</p>
-              <p>Notes: {log.log_notes}</p>
-            </div>
-          ))
-        : ""}
-    </>
+    <div className="ActivityLog">
+      {" "}
+      <h3>{startTime}</h3>
+      <p>Category: {log.category}</p>
+      <p>Hours: N/A</p>
+      <p>Notes: {log.notes}</p>
+    </div>
   );
 };
 
-export default ActivityLogs;
+export default ActivityLog;
