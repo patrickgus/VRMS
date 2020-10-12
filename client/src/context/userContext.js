@@ -33,10 +33,10 @@ export const UserProvider = ({ children }) => {
 
   const [logs, setLogs] = useState([
     {
-      date_logged: "Mon Aug 03 2020 15:27:22 GMT-0700",
-      log_category: "Development",
-      log_hours: "3",
-      log_notes: "Worked on front end",
+      category: "",
+      notes: "",
+      startDate: "",
+      endDate: "",
     },
   ]);
 
