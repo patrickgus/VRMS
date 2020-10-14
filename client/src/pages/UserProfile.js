@@ -16,7 +16,7 @@ const UserProfile = (props) => {
     removeOption,
     events,
     teams,
-    logs,
+    logs
   } = props.context;
 
   // IDs for api calls are hardcoded temporarily
@@ -84,10 +84,10 @@ const UserProfile = (props) => {
 		getProfileInfo();
   }, []);
 
-  function renderLogs() {
-    console.log("logs", logs);
-    return logs.map(log => <ActivityLog key={log._id} context={log} />)
-  }
+  const renderLogs = () => {
+    // console.log("logs", logs);
+    return logs.map(log => <ActivityLog key={log._id} log={log} />);
+  };
 
   return (
     <div>
