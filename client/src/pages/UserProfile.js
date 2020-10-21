@@ -106,7 +106,7 @@ const UserProfile = (props) => {
       <div className="profile__header">
         <h3 className="profile__subtitle">Activity Log</h3>
       </div>
-      <ActivityLogs context={{ logs }} />
+      {renderLogs()}
     </div>
   );
 };
