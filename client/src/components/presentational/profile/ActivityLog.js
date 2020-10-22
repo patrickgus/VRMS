@@ -1,26 +1,22 @@
 import React from "react";
-import moment from "moment";
 
 const ActivityLog = (log) => {
+  console.log("log", log);
   const { startDate, endDate, category, notes } = log;
-  let startTime = new Date(startDate).toLocaleDateString("en-US");
-  let endTime = new Date(endDate).toLocaleDateString("en-US");
-  // console.log("startDate", startDate);
-  // console.log("endTime", endTime);
+  const startTime = new Date(startDate).toLocaleDateString("en-US");
+  console.log("startDate", startDate);
 
-  let minutes = 1000 * 60;
-  let hours = minutes * 60;
-  let timeDif = new Date(endTime).getTime() - new Date(startTime).getTime();
-  let hoursDif = Math.round(timeDif / hours);
-  // console.log("hours", hoursDif);
-  // console.log("log", log);
+  const minutes = 1000 * 60;
+  const hours = minutes * 60;
+  const timeDif = new Date(endDate).getTime() - new Date(startDate).getTime();
+  const hoursDif = Math.round(timeDif / hours);
 
   return (
     <div className="ActivityLog">
       {" "}
-      <h3>{moment(startDate).format("MM-DD-YYYY")}</h3>
+      <h3>{startTime}</h3>
       <p>Category: {category}</p>
-      <p>Hours: N/A</p>
+      <p>Hours: {hoursDif}</p>
       <p>Notes: {notes}</p>
     </div>
   );

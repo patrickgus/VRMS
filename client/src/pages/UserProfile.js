@@ -4,7 +4,7 @@ import UserTable from '../components/presentational/profile/UserTable';
 import UserEvents from '../components/presentational/profile/UserEvents';
 import UserTeams from '../components/presentational/profile/UserTeams';
 import { UserProvider, UserContext } from '../context/userContext';
-import ActivityLogs from '../components/presentational/profile/ActivityLog';
+import ActivityLog from '../components/presentational/profile/ActivityLog';
 
 const UserProfile = (props) => {
   const {
@@ -63,11 +63,7 @@ const UserProfile = (props) => {
     try {
       await fetch("api/logs/user/5ecdc8f8cef75e0017cf30e5")
         .then((res) => res.json())
-        .then((data) => {
-          const logsArr = [data];
-          return logsArr;
-        })
-        .then((logsArr) => setLogs(logsArr));
+        .then((data) => setLogs(data));
     } catch (error) {
       console.log("Error fetching:", error);
     }
