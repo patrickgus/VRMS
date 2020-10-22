@@ -16,7 +16,7 @@ const UserProfile = (props) => {
     removeOption,
     events,
     teams,
-    logs
+    logs,
   } = props.context;
 
   // IDs for api calls are hardcoded temporarily
@@ -61,11 +61,11 @@ const UserProfile = (props) => {
 
   async function fetchLogs() {
     try {
-      await fetch("api/logs/user/5ecdc8f8cef75e0017cf30e5")
+      await fetch('api/logs/user/5ecdc8f8cef75e0017cf30e5')
         .then((res) => res.json())
         .then((data) => setLogs(data));
     } catch (error) {
-      console.log("Error fetching:", error);
+      console.log('Error fetching:', error);
     }
   }
 
@@ -77,7 +77,7 @@ const UserProfile = (props) => {
   }
 
   useEffect(() => {
-		getProfileInfo();
+    getProfileInfo();
   }, []);
 
   return (
@@ -97,7 +97,7 @@ const UserProfile = (props) => {
       <div className="profile__header">
         <h3 className="profile__subtitle">Activity Log</h3>
       </div>
-      <ActivityLog context={{ logs }}/>
+      <ActivityLog context={{ logs }} />
     </div>
   );
 };
