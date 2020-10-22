@@ -1,23 +1,17 @@
 import React from "react";
+import LogListItem from "./LogListItem";
 
-const ActivityLog = (log) => {
-  console.log("log", log);
-  const { startDate, endDate, category, notes } = log;
-  const startTime = new Date(startDate).toLocaleDateString("en-US");
-  console.log("startDate", startDate);
+const ActivityLog = ({ context }) => {
+  const { logs } = context;
 
-  const minutes = 1000 * 60;
-  const hours = minutes * 60;
-  const timeDif = new Date(endDate).getTime() - new Date(startDate).getTime();
-  const hoursDif = Math.round(timeDif / hours);
+  const renderLogs = () => {
+    console.log("logs", logs);
+    return logs.map(log => <LogListItem key={log._id} log={log} />);
+  };
 
   return (
     <div className="ActivityLog">
-      {" "}
-      <h3>{startTime}</h3>
-      <p>Category: {category}</p>
-      <p>Hours: {hoursDif}</p>
-      <p>Notes: {notes}</p>
+      {renderLogs()}
     </div>
   );
 };

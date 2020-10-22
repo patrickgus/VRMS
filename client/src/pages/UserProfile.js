@@ -80,11 +80,6 @@ const UserProfile = (props) => {
 		getProfileInfo();
   }, []);
 
-  const renderLogs = () => {
-    // console.log("logs", logs);
-    return logs.map(log => <ActivityLog key={log._id} log={log} />);
-  };
-
   return (
     <div>
       <div className="profile__header">
@@ -102,7 +97,7 @@ const UserProfile = (props) => {
       <div className="profile__header">
         <h3 className="profile__subtitle">Activity Log</h3>
       </div>
-      {renderLogs()}
+      <ActivityLog context={{ logs }}/>
     </div>
   );
 };
