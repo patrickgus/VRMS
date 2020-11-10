@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
-import "../sass/UserProfile.scss";
-import UserTable from "../components/presentational/profile/UserTable";
-import UserEvents from "../components/presentational/profile/UserEvents";
-import UserTeams from "../components/presentational/profile/UserTeams";
-import ActivityLog from "../components/presentational/profile/ActivityLog";
-import { UserProvider, UserContext } from "../context/userContext";
+import React, { useEffect } from 'react';
+import '../sass/UserProfile.scss';
+import UserTable from '../components/presentational/profile/UserTable';
+import UserEvents from '../components/presentational/profile/UserEvents';
+import UserTeams from '../components/presentational/profile/UserTeams';
+import ActivityLog from '../components/presentational/profile/ActivityLog';
+import { UserProvider, UserContext } from '../context/userContext';
+import { Link } from 'react-router-dom';
 
 const UserProfile = (props) => {
   const {
@@ -94,8 +95,11 @@ const UserProfile = (props) => {
         <h3 className="profile__subtitle">My Teams</h3>
       </div>
       <UserTeams context={{ teams }} />
-      <div className="profile__header">
+      <div className="profile__header user-log_header">
         <h3 className="profile__subtitle">Activity Log</h3>
+        <Link to={'/addlog'} className="add-log">
+          Add Log
+        </Link>
       </div>
       <ActivityLog context={{ logs }} />
     </div>

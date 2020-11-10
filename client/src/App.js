@@ -21,6 +21,7 @@ import AddNew from "./pages/AddNew";
 import ProjectLeaderDashboard from "./pages/ProjectLeaderDashboard";
 
 import "./App.scss";
+import AddLogForm from "./pages/AddLogForm";
 
 const routes = [
   { path: "/", name: "home", Component: Home },
@@ -43,6 +44,7 @@ const routes = [
     Component: ProjectLeaderDashboard,
   },
   { path: "/add/:item", name: "addnew", Component: AddNew },
+  { path: "/addlog", name: "addlog", Component: AddLogForm },
 ];
 
 const App = () => {
